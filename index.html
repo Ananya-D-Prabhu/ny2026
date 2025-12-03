@@ -1,379 +1,894 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy New Year 2026</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>Happy New Year 2026 ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Aesthetic Happy New Year 2026 greeting page with countdown, fireworks and wishes."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
 
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: white;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at top, #ffe8a3 0, #f58fb5 30%, #5b6cff 65%, #050013 100%);
+      --glass-bg: rgba(12, 8, 40, 0.7);
+      --accent: #ffde59;
+      --accent-2: #ff7bc0;
+      --text-main: #ffffff;
+      --text-muted: #c2c4ff;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --border-glow: 1px solid rgba(255, 255, 255, 0.18);
+      --blur: 18px;
+      --radius-xl: 32px;
+      --transition-fast: 0.25s ease-out;
+    }
 
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: var(--bg-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
+    /* Starry background overlay */
+    .stars,
+    .stars::before,
+    .stars::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 120px 80px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(2px 2px at 200px 10px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(2px 2px at 400px 60px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 600px 90px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(3px 3px at 300px 200px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(2px 2px at 500px 300px, rgba(255, 255, 255, 0.4), transparent);
+      opacity: 0.4;
+      z-index: -2;
+    }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .stars::before,
+    .stars::after {
+      content: "";
+      animation: twinkle 12s linear infinite;
+    }
 
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            animation: fadeInDown 1s ease;
-        }
+    .stars::after {
+      animation-duration: 18s;
+      opacity: 0.6;
+    }
 
-        h1 {
-            font-size: 5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            animation: glow 2s ease-in-out infinite;
-        }
+    @keyframes twinkle {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(-20px, 10px, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
 
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
-            50% { text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 215, 0, 0.6); }
-        }
+    /* Floating shapes */
+    .floating-shape {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(4px);
+      opacity: 0.55;
+      z-index: -1;
+      background: radial-gradient(circle at 30% 30%, #ffde59, transparent);
+      animation: drift 20s ease-in-out infinite alternate;
+    }
 
-        .year {
-            font-size: 8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s ease-in-out infinite;
-            display: inline-block;
-        }
+    .floating-shape:nth-child(1) {
+      width: 260px;
+      height: 260px;
+      top: -40px;
+      right: -60px;
+    }
 
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+    .floating-shape:nth-child(2) {
+      width: 220px;
+      height: 220px;
+      bottom: -40px;
+      left: -60px;
+      background: radial-gradient(circle at 20% 20%, #ff7bc0, transparent);
+      animation-duration: 26s;
+    }
 
-        .subtitle {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            opacity: 0.9;
-            animation: fadeIn 2s ease;
-        }
+    .floating-shape:nth-child(3) {
+      width: 160px;
+      height: 160px;
+      bottom: 20%;
+      right: 10%;
+      background: radial-gradient(circle at 20% 20%, #8cf2ff, transparent);
+      animation-duration: 22s;
+    }
 
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 60px 0;
-            flex-wrap: wrap;
-            animation: fadeInUp 1.5s ease;
-        }
+    @keyframes drift {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      to {
+        transform: translate3d(20px, -40px, 0) scale(1.05);
+      }
+    }
 
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px 40px;
-            min-width: 120px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* Main Card */
+    .card {
+      max-width: 960px;
+      width: 100%;
+      background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(10, 4, 45, 0.85)
+        ),
+        var(--glass-bg);
+      border-radius: var(--radius-xl);
+      padding: 32px 28px 26px;
+      box-shadow: var(--shadow-soft);
+      border: var(--border-glow);
+      backdrop-filter: blur(var(--blur));
+      position: relative;
+      overflow: hidden;
+    }
 
-        .countdown-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
+    @media (min-width: 768px) {
+      .card {
+        padding: 40px 40px 32px;
+      }
+    }
 
-        .countdown-number {
-            font-size: 3rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 10px;
-        }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 10% 0%,
+        rgba(255, 222, 89, 0.22),
+        transparent 55%
+      );
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        .countdown-label {
-            font-size: 1rem;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
 
-        .wishes {
-            text-align: center;
-            padding: 40px 20px;
-            animation: fadeIn 2.5s ease;
-        }
+    .logo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(5, 3, 17, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
 
-        .wishes h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255, 222, 89, 0.8);
+    }
 
-        .wishes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+    .pill-year {
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 0.76rem;
+      color: var(--accent);
+      background: rgba(15, 11, 40, 0.9);
+    }
 
-        .wish-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            transition: transform 0.3s ease, background 0.3s ease;
-            animation: fadeInUp 2s ease;
-        }
+    /* Hero */
+    .hero {
+      display: grid;
+      gap: 20px;
+    }
 
-        .wish-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.25);
-        }
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+        align-items: center;
+      }
+    }
 
-        .wish-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+    .hero-main-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.5rem, 3.4vw + 1.4rem, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
 
-        .wish-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
+    .hero-main-title span.gradient {
+      background: linear-gradient(120deg, #ffde59, #ff9bd2, #8cf2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        .wish-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.6;
+    }
 
-        .fireworks {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      margin-bottom: 14px;
+    }
 
-        .firework {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            animation: explode 1s ease-out forwards;
-        }
+    .hero-tag {
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--text-muted);
+      background: rgba(6, 1, 25, 0.85);
+    }
 
-        @keyframes explode {
-            0% {
-                transform: translate(0, 0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--x), var(--y));
-                opacity: 0;
-            }
-        }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 10px;
+    }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .btn-primary {
+      border: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffde59, #ff9bd2);
+      color: #201531;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .btn-primary span.icon {
+      font-size: 1.15rem;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      filter: brightness(1.04);
+    }
 
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            opacity: 0.8;
-        }
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: background var(--transition-fast),
+        border-color var(--transition-fast), transform var(--transition-fast);
+    }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .year { font-size: 5rem; }
-            .countdown { gap: 15px; }
-            .countdown-item { padding: 20px 30px; min-width: 100px; }
-            .countdown-number { font-size: 2rem; }
-        }
-    </style>
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-1px);
+    }
+
+    /* Countdown Card */
+    .countdown-card {
+      background: radial-gradient(circle at top, rgba(255, 222, 89, 0.15), transparent 60%),
+        rgba(5, 2, 22, 0.9);
+      border-radius: 26px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-card::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        conic-gradient(
+          from 120deg,
+          rgba(255, 222, 89, 0.12),
+          transparent 25%,
+          rgba(255, 155, 210, 0.12),
+          transparent 50%,
+          rgba(140, 242, 255, 0.12),
+          transparent 75%,
+          rgba(255, 222, 89, 0.12)
+        );
+      opacity: 0.28;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .countdown-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .countdown-target {
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .time-box {
+      background: rgba(9, 5, 38, 0.95);
+      border-radius: 18px;
+      padding: 10px 6px 9px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .time-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .time-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .countdown-note {
+      font-size: 0.75rem;
+      margin-top: 8px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2fff80;
+      box-shadow: 0 0 14px rgba(47, 255, 128, 0.9);
+    }
+
+    /* Wishes + footer */
+    .wishes {
+      margin-top: 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .wishes {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+        align-items: center;
+      }
+    }
+
+    .wish-text-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .wish-text-body {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    .wish-text-body span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .mini-list {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: var(--text-muted);
+      display: grid;
+      gap: 4px;
+    }
+
+    .mini-list span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mini-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-2);
+    }
+
+    .signature {
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .signature strong {
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    /* Fireworks canvas */
+    #fireworks-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .celebrate-message {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .celebrate-message.active {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .celebrate-message span.emoji {
+      font-size: 1.1rem;
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      opacity: 0.85;
+    }
+
+    footer a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .countdown-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card {
+        padding: 24px 20px 18px;
+      }
+      header {
+        margin-bottom: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="fireworks" id="fireworks"></div>
-    
-    <div class="container">
-        <header>
-            <h1>Happy New Year</h1>
-            <div class="year">2026</div>
-            <p class="subtitle">✨ Cheers to New Beginnings ✨</p>
-        </header>
+  <div class="stars"></div>
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+  <div class="floating-shape"></div>
+  <canvas id="fireworks-canvas"></canvas>
 
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">0</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">0</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">0</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">0</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
+  <main class="card">
+    <header>
+      <div class="logo-pill">
+        <span class="logo-dot"></span>
+        New Year Lights
+      </div>
+      <div class="pill-year">Welcoming 2026 ✨</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1 class="hero-main-title">
+          <span class="gradient">Happy New Year 2026</span><br />
+          To Your Next Bright Chapter
+        </h1>
+        <p class="hero-subtitle">
+          Here&rsquo;s to fresh starts, bold dreams, softer days, louder laughs, and
+          a version of you that feels even more like <em>you</em>.
+        </p>
+
+        <div class="hero-tags">
+          <span class="hero-tag">✨ Gratitude</span>
+          <span class="hero-tag">🎆 New Beginnings</span>
+          <span class="hero-tag">🎯 Intentions</span>
+          <span class="hero-tag">💛 Self-growth</span>
         </div>
 
-        <div class="wishes">
-            <h2>Wishing You</h2>
-            <div class="wishes-grid">
-                <div class="wish-card">
-                    <div class="wish-icon">💫</div>
-                    <h3>Dreams Come True</h3>
-                    <p>May this year bring all your dreams to life and fill your days with joy and success.</p>
-                </div>
-                <div class="wish-card">
-                    <div class="wish-icon">❤️</div>
-                    <h3>Love & Happiness</h3>
-                    <p>Surrounded by loved ones and filled with moments that make your heart smile.</p>
-                </div>
-                <div class="wish-card">
-                    <div class="wish-icon">🌟</div>
-                    <h3>Endless Opportunities</h3>
-                    <p>New adventures, exciting challenges, and infinite possibilities await you.</p>
-                </div>
-            </div>
+        <div class="cta-row">
+          <button class="btn-primary" id="celebrate-btn">
+            <span class="icon">🎉</span>
+            Celebrate Now
+          </button>
+          <button class="btn-ghost" id="scroll-wish">
+            Read the New Year Wish ↗
+          </button>
         </div>
+      </div>
 
-        <footer>
-            <p>May 2026 be your best year yet! 🎉</p>
-        </footer>
-    </div>
+      <!-- Countdown -->
+      <aside class="countdown-card" aria-label="Countdown to New Year 2026">
+        <div class="countdown-inner">
+          <div class="countdown-label">
+            <span>Countdown to Midnight</span>
+            <span class="countdown-target" id="target-text"></span>
+          </div>
+          <div class="countdown-grid">
+            <div class="time-box">
+              <div class="time-value" id="days">00</div>
+              <div class="time-label">Days</div>
+            </div>
+            <div class="time-box">
+              <div class="time-value" id="hours">00</div>
+              <div class="time-label">Hours</div>
+            </div>
+            <div class="time-box">
+              <div class="time-value" id="minutes">00</div>
+              <div class="time-label">Minutes</div>
+            </div>
+            <div class="time-box">
+              <div class="time-value" id="seconds">00</div>
+              <div class="time-label">Seconds</div>
+            </div>
+          </div>
+          <p class="countdown-note">
+            <span class="indicator-dot"></span>
+            <span id="countdown-status">Live countdown to 01 January 2026</span>
+          </p>
+          <p class="celebrate-message" id="celebrate-message">
+            <span class="emoji">🌟</span>
+            It’s here! Happy New Year 2026!
+          </p>
+        </div>
+      </aside>
+    </section>
 
-    <script>
-        // Create stars
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
+    <!-- Wishes -->
+    <section class="wishes" id="wishes-section">
+      <div>
+        <h2 class="wish-text-title">A Little Wish For You</h2>
+        <p class="wish-text-body">
+          May <span>2026</span> be the year you walk lighter, love louder, and trust
+          yourself a little more. The late nights, quiet wins, tiny choices,
+          and brave decisions you make will gently stack into something
+          beautiful.
+        </p>
+        <div class="mini-list">
+          <span><span class="mini-bullet"></span> more peace than pressure</span>
+          <span><span class="mini-bullet"></span> more alignment than approval</span>
+          <span><span class="mini-bullet"></span> more memories you live fully, not just capture</span>
+        </div>
+      </div>
+      <div class="signature">
+        With warmth,<br />
+        <strong>HAPPY&nbsp;NEW&nbsp;YEAR&nbsp;2026</strong><br />
+        Make it kind. Make it yours.
+      </div>
+    </section>
+
+    <footer>
+      <span>Designed for a cozy, aesthetic New Year vibe 🎇</span>
+      <span>Feel free to tweak &amp; personalize this page.</span>
+    </footer>
+  </main>
+
+  <script>
+    // Countdown Logic
+    (function () {
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+      const statusEl = document.getElementById("countdown-status");
+      const celebrateMsg = document.getElementById("celebrate-message");
+      const targetTextEl = document.getElementById("target-text");
+
+      const targetDate = new Date("2026-01-01T00:00:00");
+
+      targetTextEl.textContent = targetDate.toLocaleString(undefined, {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+
+      function pad(num) {
+        return num.toString().padStart(2, "0");
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+        let diff = targetDate.getTime() - now.getTime();
+
+        if (diff <= 0) {
+          diff = 0;
+          daysEl.textContent = "00";
+          hoursEl.textContent = "00";
+          minutesEl.textContent = "00";
+          secondsEl.textContent = "00";
+          statusEl.textContent = "It’s officially 2026 🎉";
+          celebrateMsg.classList.add("active");
+          startFireworks();
+          clearInterval(intervalId);
+          return;
         }
 
-        // Countdown timer
-        function updateCountdown() {
-            const now = new Date();
-            const newYear = new Date('2026-01-01T00:00:00');
-            const diff = newYear - now;
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / (1000 * 60)) % 60;
+        const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        daysEl.textContent = pad(days);
+        hoursEl.textContent = pad(hours);
+        minutesEl.textContent = pad(minutes);
+        secondsEl.textContent = pad(seconds);
+      }
 
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-                document.getElementById('seconds').textContent = seconds;
-            } else {
-                document.getElementById('countdown').innerHTML = '<div class="countdown-item"><span class="countdown-number">🎉</span><span class="countdown-label">Happy New Year!</span></div>';
-            }
+      const intervalId = setInterval(updateCountdown, 1000);
+      updateCountdown();
+    })();
+
+    // Scroll to wishes
+    document.getElementById("scroll-wish").addEventListener("click", () => {
+      const section = document.getElementById("wishes-section");
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // Fireworks on canvas (simple lightweight animation)
+    const canvas = document.getElementById("fireworks-canvas");
+    const ctx = canvas.getContext("2d");
+    let fireworks = [];
+    let particles = [];
+    let fireworksActive = false;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    class Firework {
+      constructor(x, y, targetY, color) {
+        this.x = x;
+        this.y = y;
+        this.targetY = targetY;
+        this.speed = random(6, 9);
+        this.angle = Math.PI * -0.5;
+        this.brightness = random(50, 80);
+        this.alpha = 1;
+        this.color = color;
+      }
+
+      update(index) {
+        const vx = Math.cos(this.angle) * this.speed;
+        const vy = Math.sin(this.angle) * this.speed;
+        this.x += vx;
+        this.y += vy;
+
+        if (this.y <= this.targetY) {
+          createParticles(this.x, this.y, this.color);
+          fireworks.splice(index, 1);
         }
+      }
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+      draw() {
+        ctx.save();
+        ctx.globalCompositeOperation = "lighter";
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
 
-        // Create fireworks
-        function createFirework() {
-            const fireworksContainer = document.getElementById('fireworks');
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight * 0.6;
-            
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffd700'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'firework';
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
-                particle.style.background = color;
-                
-                const angle = (Math.PI * 2 * i) / 30;
-                const velocity = 50 + Math.random() * 100;
-                particle.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
-                particle.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
-                
-                fireworksContainer.appendChild(particle);
-                
-                setTimeout(() => particle.remove(), 1000);
-            }
+    class Particle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.angle = random(0, Math.PI * 2);
+        this.speed = random(1, 6);
+        this.friction = 0.92;
+        this.gravity = 0.15;
+        this.alpha = 1;
+        this.decay = random(0.015, 0.03);
+        this.color = color;
+      }
+
+      update(index) {
+        this.speed *= this.friction;
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed + this.gravity;
+        this.alpha -= this.decay;
+
+        if (this.alpha <= this.decay) {
+          particles.splice(index, 1);
         }
+      }
 
-        setInterval(createFirework, 2000);
-        
-        // Initial burst
-        setTimeout(createFirework, 500);
-    </script>
+      draw() {
+        ctx.save();
+        ctx.globalCompositeOperation = "lighter";
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function createParticles(x, y, color) {
+      for (let i = 0; i < 40; i++) {
+        particles.push(new Particle(x, y, color));
+      }
+    }
+
+    function loop() {
+      if (!fireworksActive && particles.length === 0) return;
+
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = "lighter";
+
+      fireworks.forEach((fw, i) => {
+        fw.update(i);
+        fw.draw();
+      });
+
+      particles.forEach((p, i) => {
+        p.update(i);
+        p.draw();
+      });
+
+      requestAnimationFrame(loop);
+    }
+
+    function launchFirework() {
+      const startX = random(0, canvas.width);
+      const targetY = random(canvas.height * 0.15, canvas.height * 0.55);
+      const color = `hsl(${Math.floor(random(0, 360))}, 85%, 65%)`;
+      fireworks.push(
+        new Firework(startX, canvas.height + 10, targetY, color)
+      );
+    }
+
+    function startFireworks() {
+      if (!canvas || fireworksActive) return;
+      fireworksActive = true;
+
+      // burst for 4 seconds
+      const duration = 4000;
+      const start = performance.now();
+
+      function frame(now) {
+        const elapsed = now - start;
+        if (elapsed < duration) {
+          if (Math.random() < 0.35) {
+            launchFirework();
+          }
+          requestAnimationFrame(frame);
+        } else {
+          fireworksActive = false;
+        }
+      }
+
+      loop();
+      requestAnimationFrame(frame);
+    }
+
+    // Manual celebrate button
+    document.getElementById("celebrate-btn").addEventListener("click", () => {
+      startFireworks();
+      const msg = document.getElementById("celebrate-message");
+      msg.classList.add("active");
+    });
+  </script>
 </body>
 </html>
